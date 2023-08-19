@@ -5,7 +5,7 @@
 # It also logs the time of the notification in format : dd/mm/yy 24h time - value - state
 
 
-source "./test/config.sh"
+source #LONG PATH TO THE FILE
 
 val=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "percentage" | grep -o "[0-9]*")
 state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "state" | grep -o "discharging")
