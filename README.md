@@ -15,4 +15,4 @@ The file's long path should replace #LONG PATH TO THE FILE
 
 ### Future Changes
 
-- Checks last log, if it is in the same time span, don't log it again
+- Clean up the code
