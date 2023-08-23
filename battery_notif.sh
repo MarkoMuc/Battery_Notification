@@ -41,10 +41,11 @@ elif [ $val -ge 75 ] && [ "$state" == "" ]; then
         timelog=$(date -d "$timelog" +%s)
         
         if [ "$datelog" -lt "$(date -d "$(date +"%m/%d/%Y")" +%s)" ] || [ "$((timecurr - timelog))" -gt 300 ]; then
-            echo "$(date +"%d/%m/%Y - %T") - $val% - charging - $capacity%" >> $LOGS_LOCATION/battery_notif.log
+            echo "$(date +"%m/%d/%Y - %T") - $val% - charging - $capacity%" >> $LOGS_LOCATION/battery_notif.log
         fi
     fi
     exit 0
 fi
 
 exit 1
+
