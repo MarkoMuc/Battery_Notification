@@ -15,4 +15,5 @@ The file's long path should replace #LONG PATH TO THE FILE
 
 ### Future Changes
 
+- Add a snooze for option
 - Clean up the code
