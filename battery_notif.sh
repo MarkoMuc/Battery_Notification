@@ -33,7 +33,7 @@ elif [ $val -le 25 ] && [ "$state" == "discharging" ]; then
     fi
     
     exit 0
-elif [ $val -gt 75 ] && [ "$state" == "" ]; then
+elif [ $val -ge 75 ] && [ "$state" == "" ]; then
     notify-send -u normal -t 45000 -a Battery "Un-Plug charger, Battery $val%"
     if [ $val -eq 75 ] ; then 
         lastlog=$(cat $LOGS_LOCATION/battery_notif.log | tail -n 1);
