@@ -4,10 +4,14 @@ A simple Linux script for notifying the user when the battery charge reaches 25%
 
 ## **Important**
 
-A file (eg. config.sh) should be made to declare 2 variables :
+A file (eg. config.sh) should be made to declare 4 variables :
+| Variable    | Description    | Values    |
+|---------------- | --------------- | --------------- |
+| BATTERY_NOTIF_OFF | Turn off notifications *and* logging | true/false |
+| BATTERY_QUIET | Turn off notifications | true/false |
+| BATTERY_LOGS_LOCATION | Log file location | Path String |
+| BATTERY_PATH | Battery path used in *upower* | Path String |
 
-- BATTERY_NOTIF_OFF - to turn off the notifications and logging
-- LOGS_LOCATION - location for the log file
 
 This file's full path should replace #LONG PATH TO THE FILE
 
@@ -15,7 +19,6 @@ This file's full path should replace #LONG PATH TO THE FILE
 
 ## Future Changes
 
-- [ ] Snooze notifications for X seconds 
-- [ ] Add quite option that only logs
+- [X] Add quite option that only logs
 - [ ] Clean Up Code 
 - [ ] ***FIN*** 
