@@ -17,8 +17,4 @@ This file's full path should replace #LONG PATH TO THE FILE
 
 ```source #LONG PATH TO THE FILE```
 
-## Future Changes
-
-- [X] Add quite option that only logs
-- [ ] Clean Up Code 
-- [ ] ***FIN*** 
+**FIN**

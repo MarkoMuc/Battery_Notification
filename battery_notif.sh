@@ -4,9 +4,7 @@
 # Checks if battery is <=25% and discharging or >=75% and charging, if true sends a notfication
 # It also logs the time of the notification in format : dd/mm/yy 24h time - value - state
 
-
-#source #LONG PATH TO THE FILE
-source "./test/config.sh"
+source #LONG PATH TO THE FILE
 
 parse=$(upower -i $BATTERY_PATH)
 
@@ -16,9 +14,8 @@ state=$(echo "$parse" | grep "state" | grep -o "discharging")
 capacity=$(echo "$parse" | grep "capacity" | grep -o "[0-9]*\.[0-9]*")
 
 if [ "${BATTERY_NOTIF_OFF,,}" == "true" ]; then
-    #notify-send -u normal -t 45000 "Battery" "Off"
     exit 0
-elif { [ $val -le 100 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ] && [ "$state" == "" ]; }; then
+elif { [ $val -le 25 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ] && [ "$state" == "" ]; }; then
     if [ "${BATTERY_QUIET,,}" == "false" ]; then
         notif_message="Plug-In charger, Battery $val%"
 
@@ -29,7 +26,7 @@ elif { [ $val -le 100 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ]
         notify-send -u normal -t 45000 "Battery" "$notif_message"
     fi
 
-    if [ $val -le 100 ] || [ $val -gt 75 ]; then
+    if [ $val -eq 25 ] || [ $val -eq 75 ]; then
         
         if [ $val -eq 75 ]; then
             state="charging"
@@ -37,10 +34,10 @@ elif { [ $val -le 100 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ]
 
         if [ ! -e "$BATTERY_LOGS_LOCATION/battery_notif.log" ]; then
             echo "$(date +"%m/%d/%Y - %T") - $val% - $state - $capacity%" >> $BATTERY_LOGS_LOCATION/battery_notif.log
+            exit 0
         fi
 
         lastlog=$(cat $BATTERY_LOGS_LOCATION/battery_notif.log | tail -n 1);
-        lastlog="11/09/2023 - 21:41:39 - 61% - discharging - 89.5556%"
         datelog=$(echo "$lastlog" |cut -d "-" -f 1) 
         datelog=$(date -d "$datelog" +%s)
         timelog=$(echo "$lastlog" | cut -d "-" -f 2)
