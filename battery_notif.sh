@@ -23,7 +23,7 @@ elif { [ $val -le 25 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ] 
             notif_message="Un-Plug charger, Battery $val%"
         fi
         
-        notify-send -u normal -t 45000 "Battery" "$notif_message"
+        notify-send -u normal -t 45000 -a "Battery" "$notif_message"
     fi
 
     if [ $val -eq 25 ] || [ $val -eq 75 ]; then
