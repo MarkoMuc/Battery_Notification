@@ -13,7 +13,7 @@ val=$(echo "$parse" | grep "percentage" | grep -o "[0-9]*")
 state=$(echo "$parse" | grep "state" | grep -o "discharging")
 capacity=$(echo "$parse" | grep "capacity" | grep -o "[0-9]*\.[0-9]*")
 
-if [ "${BATTERY_NOTIF_OFF,,}" == "true" ]; then
+if [ "${BATTERY_ALL_OFF,,}" == "true" ]; then
     exit 0
 elif { [ $val -le 25 ] && [ "$state" == "discharging" ]; } || { [ $val -ge 75 ] && [ "$state" == "" ]; }; then
     if [ "${BATTERY_QUIET,,}" == "false" ]; then
