@@ -12,6 +12,7 @@ parse=$(upower -i $BATTERY_PATH)
 val=$(echo "$parse" | grep "percentage" | grep -o "[0-9]*")
 state=$(echo "$parse" | grep "state" | grep -o "discharging")
 capacity=$(echo "$parse" | grep "capacity" | grep -o "[0-9]*\.[0-9]*")
+mkdir -p $BATTERY_LOGS_LOCATION
 
 if [ "${BATTERY_ALL_OFF,,}" == "true" ]; then
     exit 0
